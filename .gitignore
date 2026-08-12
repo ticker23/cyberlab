@@ -1,0 +1,8 @@
+*.qcow2
+*.iso
+*.raw
+*.log
+*.img
+*.pcap
+*pcapng
+.env
