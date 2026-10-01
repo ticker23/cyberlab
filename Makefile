@@ -13,4 +13,5 @@ update:
 	rsync -avz ~/Projects/CyberLab/ --exclude Makefile --exclude .git/ zahark@100.84.29.65:/opt/cyberlab
 
 install:
-	ssh lab "${LAB_DIR}/scripts/install-packages.sh" 
+	ssh lab "export LIBGUESTFS_DEBUG=1 LIBGUESTFS_TRACE=1 && ${LAB_DIR}/scripts/install-packages.sh" > debug.txt 2>&1; echo "SCRIPT [DONE]"
+
