@@ -1,7 +1,7 @@
 include config.env
 export
 
-.PHONY: deploy-base rmbase update install
+.PHONY: deploy-base rmbase update install deploy-images
 
 deploy-base:
 	ssh lab "cd /opt/cyberlab/scripts && bash build-base.sh 2>&1 | tee build.log" 
@@ -15,3 +15,5 @@ update:
 install:
 	ssh lab "export LIBGUESTFS_DEBUG=1 LIBGUESTFS_TRACE=1 && ${LAB_DIR}/scripts/install-packages.sh" > debug.txt 2>&1; echo "SCRIPT [DONE]"
 
+deploy-images:
+	ssh lab "${LAB_DIR}/script/images_deploy.sh; echo SCRIPT [DONE]"

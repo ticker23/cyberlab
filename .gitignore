@@ -1,4 +1,5 @@
 *.qcow2
+*.md
 *.txt
 *.iso
 *.raw

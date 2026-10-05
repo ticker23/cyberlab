@@ -1,7 +1,7 @@
 #!/bin/bash
 source /opt/cyberlab/config.env
 
-set -euo
+set -euo pipefail
 
 VMs=("client-a" "server" "router")
 
@@ -24,7 +24,10 @@ for vm in "${VMs[@]}"; do
 			-a "$IMAGE" \
 			--format qcow2 \
 			--hostname "$vm" \
-			--firstboot "$DIR_LAB/scripts/${vm}.sh"
+			--run-command "rm -f /etc/ssh/ssh_host*" \
+			--firstboot "$DIR_LAB/scripts/${vm}.sh" \
+			--firstboot "ssh-keygen -A"
+
 		echo "Executed ${vm}.sh"
 
 done
