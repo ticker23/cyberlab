@@ -12,14 +12,14 @@ for image in "${IMAGES[@]}"; do
 	fi
 
 	virt-install \
-		--connect qemu:///systems \
+		--connect qemu:///system \
 		--name "$image" \
 		--memory 1028 \
 		--disk path="$IMAGE" \
 		--import \
-		--network network=br-lab \
+		--network bridge=br-lab \
 		--vcpus 1 \
-		--os-vatiant debian12 \
+		--osinfo debian12 \
 		--noautoconsole
 		
-		
+	done		
